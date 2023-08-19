@@ -29,69 +29,8 @@ akas = pd.read_csv(akas_file_path, sep='\t', compression = 'gzip')
 #     print("File does not exist.")
 ```
 
-    /var/folders/n4/lff0x4bd7h137vxw7zpjzwn00000gq/T/ipykernel_51636/2424429200.py:15: DtypeWarning: Columns (7) have mixed types. Specify dtype option on import or set low_memory=False.
+    /var/folders/n4/lff0x4bd7h137vxw7zpjzwn00000gq/T/ipykernel_74557/692151625.py:15: DtypeWarning: Columns (7) have mixed types. Specify dtype option on import or set low_memory=False.
       akas = pd.read_csv(akas_file_path, sep='\t', compression = 'gzip')
-
-
-
-
-
-    (            tconst parentTconst seasonNumber episodeNumber
-     0        tt0041951    tt0041038            1             9
-     1        tt0042816    tt0989125            1            17
-     2        tt0042889    tt0989125           \N            \N
-     3        tt0043426    tt0040051            3            42
-     4        tt0043631    tt0989125            2            16
-     ...            ...          ...          ...           ...
-     7658160  tt9916846    tt1289683            3            18
-     7658161  tt9916848    tt1289683            3            17
-     7658162  tt9916850    tt1289683            3            19
-     7658163  tt9916852    tt1289683            3            20
-     7658164  tt9916880    tt0985991            4             2
-     
-     [7658165 rows x 4 columns],
-                 tconst  averageRating  numVotes
-     0        tt0000001            5.7      1990
-     1        tt0000002            5.8       265
-     2        tt0000003            6.5      1854
-     3        tt0000004            5.5       178
-     4        tt0000005            6.2      2640
-     ...            ...            ...       ...
-     1335970  tt9916730            8.3        10
-     1335971  tt9916766            7.0        22
-     1335972  tt9916778            7.2        36
-     1335973  tt9916840            8.8         6
-     1335974  tt9916880            8.2         6
-     
-     [1335975 rows x 3 columns],
-                 titleId  ordering                      title region language  \
-     0         tt0000001         1                 Карменсіта     UA       \N   
-     1         tt0000001         2                 Carmencita     DE       \N   
-     2         tt0000001         3  Carmencita - spanyol tánc     HU       \N   
-     3         tt0000001         4                 Καρμενσίτα     GR       \N   
-     4         tt0000001         5                 Карменсита     RU       \N   
-     ...             ...       ...                        ...    ...      ...   
-     36788269  tt9916852         5             Episódio #3.20     PT       pt   
-     36788270  tt9916852         6             Episodio #3.20     IT       it   
-     36788271  tt9916852         7               एपिसोड #3.20     IN       hi   
-     36788272  tt9916856         1                   The Wind     DE       \N   
-     36788273  tt9916856         2                   The Wind     \N       \N   
-     
-                     types     attributes isOriginalTitle  
-     0         imdbDisplay             \N               0  
-     1                  \N  literal title               0  
-     2         imdbDisplay             \N               0  
-     3         imdbDisplay             \N               0  
-     4         imdbDisplay             \N               0  
-     ...               ...            ...             ...  
-     36788269           \N             \N               0  
-     36788270           \N             \N               0  
-     36788271           \N             \N               0  
-     36788272  imdbDisplay             \N               0  
-     36788273     original             \N               1  
-     
-     [36788274 rows x 8 columns])
-
 
 
 STEP 2: DATA PREP
@@ -479,7 +418,9 @@ a_df = akas.loc[akas['title'] == 'Arrested Development'] # Filter for the title 
 display(a_df) # View updated table
 ```
 
-    Index(['titleId', 'title'], dtype='object')
+    Index(['titleId', 'ordering', 'title', 'region', 'language', 'types',
+           'attributes', 'isOriginalTitle'],
+          dtype='object')
 
 
 
@@ -502,189 +443,411 @@ display(a_df) # View updated table
     <tr style="text-align: right;">
       <th></th>
       <th>titleId</th>
+      <th>ordering</th>
       <th>title</th>
+      <th>region</th>
+      <th>language</th>
+      <th>types</th>
+      <th>attributes</th>
+      <th>isOriginalTitle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>1808155</th>
       <td>tt0367279</td>
+      <td>10</td>
       <td>Arrested Development</td>
+      <td>AU</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808158</th>
       <td>tt0367279</td>
+      <td>13</td>
       <td>Arrested Development</td>
+      <td>TH</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808161</th>
       <td>tt0367279</td>
+      <td>16</td>
       <td>Arrested Development</td>
+      <td>PH</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808162</th>
       <td>tt0367279</td>
+      <td>17</td>
       <td>Arrested Development</td>
+      <td>AE</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808163</th>
       <td>tt0367279</td>
+      <td>18</td>
       <td>Arrested Development</td>
+      <td>TR</td>
+      <td>tr</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808164</th>
       <td>tt0367279</td>
+      <td>19</td>
       <td>Arrested Development</td>
+      <td>IN</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808165</th>
       <td>tt0367279</td>
+      <td>1</td>
       <td>Arrested Development</td>
+      <td>SG</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808167</th>
       <td>tt0367279</td>
+      <td>21</td>
       <td>Arrested Development</td>
+      <td>GR</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808168</th>
       <td>tt0367279</td>
+      <td>22</td>
       <td>Arrested Development</td>
+      <td>AR</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808170</th>
       <td>tt0367279</td>
+      <td>24</td>
       <td>Arrested Development</td>
+      <td>SE</td>
+      <td>\N</td>
+      <td>dvd</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808173</th>
       <td>tt0367279</td>
+      <td>27</td>
       <td>Arrested Development</td>
+      <td>GB</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808175</th>
       <td>tt0367279</td>
+      <td>29</td>
       <td>Arrested Development</td>
+      <td>NL</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808178</th>
       <td>tt0367279</td>
+      <td>31</td>
       <td>Arrested Development</td>
+      <td>CA</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808179</th>
       <td>tt0367279</td>
+      <td>32</td>
       <td>Arrested Development</td>
+      <td>KR</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808182</th>
       <td>tt0367279</td>
+      <td>35</td>
       <td>Arrested Development</td>
+      <td>HK</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808184</th>
       <td>tt0367279</td>
+      <td>37</td>
       <td>Arrested Development</td>
+      <td>ES</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808185</th>
       <td>tt0367279</td>
+      <td>38</td>
       <td>Arrested Development</td>
+      <td>IN</td>
+      <td>hi</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808188</th>
       <td>tt0367279</td>
+      <td>40</td>
       <td>Arrested Development</td>
+      <td>DE</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808189</th>
       <td>tt0367279</td>
+      <td>41</td>
       <td>Arrested Development</td>
+      <td>US</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808190</th>
       <td>tt0367279</td>
+      <td>42</td>
       <td>Arrested Development</td>
+      <td>EC</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808193</th>
       <td>tt0367279</td>
+      <td>45</td>
       <td>Arrested Development</td>
+      <td>CA</td>
+      <td>fr</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808195</th>
       <td>tt0367279</td>
+      <td>47</td>
       <td>Arrested Development</td>
+      <td>ID</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808197</th>
       <td>tt0367279</td>
+      <td>49</td>
       <td>Arrested Development</td>
+      <td>IL</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808200</th>
       <td>tt0367279</td>
+      <td>51</td>
       <td>Arrested Development</td>
+      <td>ZA</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1808205</th>
       <td>tt0367279</td>
+      <td>8</td>
       <td>Arrested Development</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>original</td>
+      <td>\N</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1808206</th>
       <td>tt0367279</td>
+      <td>9</td>
       <td>Arrested Development</td>
+      <td>EG</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1835584</th>
       <td>tt0376489</td>
+      <td>1</td>
       <td>Arrested Development</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>original</td>
+      <td>\N</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1835585</th>
       <td>tt0376489</td>
+      <td>2</td>
       <td>Arrested Development</td>
+      <td>DE</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1835586</th>
       <td>tt0376489</td>
+      <td>3</td>
       <td>Arrested Development</td>
+      <td>US</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2510215</th>
       <td>tt0656233</td>
+      <td>1</td>
       <td>Arrested Development</td>
+      <td>US</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2752375</th>
       <td>tt0757519</td>
+      <td>1</td>
       <td>Arrested Development</td>
+      <td>US</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3002908</th>
       <td>tt0858164</td>
+      <td>1</td>
       <td>Arrested Development</td>
+      <td>AU</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3125426</th>
       <td>tt0901469</td>
+      <td>1</td>
       <td>Arrested Development</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>original</td>
+      <td>\N</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3125427</th>
       <td>tt0901469</td>
+      <td>2</td>
       <td>Arrested Development</td>
+      <td>GB</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3125428</th>
       <td>tt0901469</td>
+      <td>3</td>
       <td>Arrested Development</td>
+      <td>US</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>5136478</th>
       <td>tt1077038</td>
+      <td>1</td>
       <td>Arrested Development</td>
+      <td>US</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -699,14 +862,14 @@ display(a_df) # View updated table
 
 episodes = pd.DataFrame(ep.loc[ep['parentTconst'] == 'tt0367279'])
 episodes['episodeNumber'] = episodes['episodeNumber'].astype(int) # String to int conversion for sorting
-for ep in episodes['episodeNumber']:
-    if ep < 10:
-        episodes['episodeNumber'] = ep
+# for val in episodes['episodeNumber']:
+#     if val < 10:
+#         episodes['episodeNumber'] = val
 episodes['seasonNumber'] = episodes['seasonNumber'].astype(int) # String to int conversion for sorting
 
-# episodes.sort_values(by=['seasonNumber','episodeNumber'], ascending=[True,True], inplace=True) # Sorting
-# pd.set_option('display.max_rows', 100) # Improve the viewing of the data
-# display(episodes)
+episodes.sort_values(by=['seasonNumber','episodeNumber'], ascending=[True,True], inplace=True) # Sorting
+pd.set_option('display.max_rows', 100) # Improve the viewing of the data
+display(episodes)
 
 ## Though in the akas table we see a few different IDs associated with our title, this data is likely 
 ## outlier data (shares the same name but is not the same show). To confirm, we recall that our show 
@@ -715,12 +878,631 @@ episodes['seasonNumber'] = episodes['seasonNumber'].astype(int) # String to int 
 ```
 
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tconst</th>
+      <th>parentTconst</th>
+      <th>seasonNumber</th>
+      <th>episodeNumber</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>26367</th>
+      <td>tt0515236</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>26387</th>
+      <td>tt0515256</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>26343</th>
+      <td>tt0515212</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>26354</th>
+      <td>tt0515223</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>26345</th>
+      <td>tt0515214</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>26388</th>
+      <td>tt0515257</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>26352</th>
+      <td>tt0515221</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>26362</th>
+      <td>tt0515231</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>26378</th>
+      <td>tt0515247</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>26366</th>
+      <td>tt0515235</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>26369</th>
+      <td>tt0515238</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>26357</th>
+      <td>tt0515226</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>26341</th>
+      <td>tt0515210</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>26375</th>
+      <td>tt0515244</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>26377</th>
+      <td>tt0515246</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>26339</th>
+      <td>tt0515208</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>26353</th>
+      <td>tt0515222</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>26359</th>
+      <td>tt0515228</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>26342</th>
+      <td>tt0515211</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>26389</th>
+      <td>tt0515258</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>26363</th>
+      <td>tt0515232</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>26355</th>
+      <td>tt0515224</td>
+      <td>tt0367279</td>
+      <td>1</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>26384</th>
+      <td>tt0515253</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>26385</th>
+      <td>tt0515254</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>26340</th>
+      <td>tt0515209</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>26350</th>
+      <td>tt0515219</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>26374</th>
+      <td>tt0515243</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>26338</th>
+      <td>tt0515207</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>26379</th>
+      <td>tt0515248</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>26370</th>
+      <td>tt0515239</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>26344</th>
+      <td>tt0515213</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>26371</th>
+      <td>tt0515240</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>26365</th>
+      <td>tt0515234</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>26351</th>
+      <td>tt0515220</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>26360</th>
+      <td>tt0515229</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>26382</th>
+      <td>tt0515251</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>26386</th>
+      <td>tt0515255</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>26358</th>
+      <td>tt0515227</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>26376</th>
+      <td>tt0515245</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>26372</th>
+      <td>tt0515241</td>
+      <td>tt0367279</td>
+      <td>2</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>26381</th>
+      <td>tt0515250</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>26380</th>
+      <td>tt0515249</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>26349</th>
+      <td>tt0515218</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>26364</th>
+      <td>tt0515233</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>26361</th>
+      <td>tt0515230</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>26383</th>
+      <td>tt0515252</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>26368</th>
+      <td>tt0515237</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>26356</th>
+      <td>tt0515225</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>26373</th>
+      <td>tt0515242</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>26347</th>
+      <td>tt0515216</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>26348</th>
+      <td>tt0515217</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>26346</th>
+      <td>tt0515215</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>264066</th>
+      <td>tt0757386</td>
+      <td>tt0367279</td>
+      <td>3</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>4098654</th>
+      <td>tt2128813</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4098662</th>
+      <td>tt2128815</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4098668</th>
+      <td>tt2128816</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4098673</th>
+      <td>tt2128817</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4098678</th>
+      <td>tt2128818</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4098683</th>
+      <td>tt2128819</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4098686</th>
+      <td>tt2128820</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4098690</th>
+      <td>tt2128821</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4098693</th>
+      <td>tt2128822</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4098658</th>
+      <td>tt2128814</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4636342</th>
+      <td>tt2495824</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>4712733</th>
+      <td>tt2604336</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4712732</th>
+      <td>tt2604334</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>4712734</th>
+      <td>tt2604338</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>5170435</th>
+      <td>tt2826310</td>
+      <td>tt0367279</td>
+      <td>4</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>5778230</th>
+      <td>tt4589902</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5866072</th>
+      <td>tt4861452</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>5866073</th>
+      <td>tt4861456</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>5866074</th>
+      <td>tt4861458</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5866075</th>
+      <td>tt4861460</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5866076</th>
+      <td>tt4861462</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>5866077</th>
+      <td>tt4861466</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>5866079</th>
+      <td>tt4861470</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>5866080</th>
+      <td>tt4861472</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>5866082</th>
+      <td>tt4861478</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5866084</th>
+      <td>tt4861482</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>5866086</th>
+      <td>tt4861486</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>5866085</th>
+      <td>tt4861484</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>5866087</th>
+      <td>tt4861490</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>5866088</th>
+      <td>tt4861494</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>5778231</th>
+      <td>tt4589904</td>
+      <td>tt0367279</td>
+      <td>5</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ```python
 ## Here we will combine the episode data and the rating data to have our full, usable dataset.
 
 eprate = rate.merge(episodes, on='tconst', how='inner') # Create new table with rating + episode data with an inner join
 eprate.sort_values(by=['seasonNumber','episodeNumber'], ascending=[True,True], inplace=True) # Sort values by season and episode
-display(eprate) # View dataset
+display(eprate) 
 
 ## Tests: 
 # print(rate_df.loc[rate_df['tconst'] == 'tt0515207']) # Rating of s2e6 should be 9.0
@@ -1523,628 +2305,6 @@ data = pd.DataFrame(eprate.iloc[:,[1,2,4,5]])
 ```
 
 
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>averageRating</th>
-      <th>numVotes</th>
-      <th>seasonNumber</th>
-      <th>episodeNumber</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>29</th>
-      <td>8.1</td>
-      <td>4027</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>8.4</td>
-      <td>3546</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>8.1</td>
-      <td>3238</td>
-      <td>1</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>8.3</td>
-      <td>3093</td>
-      <td>1</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8.2</td>
-      <td>2955</td>
-      <td>1</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>8.0</td>
-      <td>2843</td>
-      <td>1</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>8.1</td>
-      <td>2794</td>
-      <td>1</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>8.0</td>
-      <td>2726</td>
-      <td>1</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>8.4</td>
-      <td>2698</td>
-      <td>1</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>9.1</td>
-      <td>3435</td>
-      <td>1</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>8.2</td>
-      <td>2689</td>
-      <td>1</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>8.4</td>
-      <td>2620</td>
-      <td>1</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>8.4</td>
-      <td>2592</td>
-      <td>1</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>8.5</td>
-      <td>2696</td>
-      <td>1</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>8.1</td>
-      <td>2520</td>
-      <td>1</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>8.5</td>
-      <td>2554</td>
-      <td>1</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>8.7</td>
-      <td>2678</td>
-      <td>1</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>8.2</td>
-      <td>2435</td>
-      <td>1</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>8.1</td>
-      <td>2422</td>
-      <td>1</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>7.9</td>
-      <td>2391</td>
-      <td>1</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>8.5</td>
-      <td>2463</td>
-      <td>1</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>8.6</td>
-      <td>2523</td>
-      <td>1</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>8.7</td>
-      <td>2495</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>8.5</td>
-      <td>2443</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>8.8</td>
-      <td>2604</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>9.0</td>
-      <td>2759</td>
-      <td>2</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>8.5</td>
-      <td>2318</td>
-      <td>2</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>9.0</td>
-      <td>2850</td>
-      <td>2</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>8.1</td>
-      <td>2225</td>
-      <td>2</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>8.0</td>
-      <td>2186</td>
-      <td>2</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>8.0</td>
-      <td>2200</td>
-      <td>2</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>8.3</td>
-      <td>2333</td>
-      <td>2</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>8.3</td>
-      <td>2183</td>
-      <td>2</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>8.7</td>
-      <td>2301</td>
-      <td>2</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>8.6</td>
-      <td>2329</td>
-      <td>2</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>8.5</td>
-      <td>2242</td>
-      <td>2</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>8.6</td>
-      <td>2294</td>
-      <td>2</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>9.0</td>
-      <td>2635</td>
-      <td>2</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>8.5</td>
-      <td>2183</td>
-      <td>2</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>8.9</td>
-      <td>2319</td>
-      <td>2</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>8.6</td>
-      <td>2236</td>
-      <td>3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>8.3</td>
-      <td>2209</td>
-      <td>3</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>8.6</td>
-      <td>2231</td>
-      <td>3</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>8.2</td>
-      <td>2188</td>
-      <td>3</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>8.7</td>
-      <td>2378</td>
-      <td>3</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>8.6</td>
-      <td>2225</td>
-      <td>3</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>7.9</td>
-      <td>2056</td>
-      <td>3</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>8.7</td>
-      <td>2281</td>
-      <td>3</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>8.7</td>
-      <td>2338</td>
-      <td>3</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>8.5</td>
-      <td>2110</td>
-      <td>3</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>8.6</td>
-      <td>2158</td>
-      <td>3</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>8.8</td>
-      <td>2206</td>
-      <td>3</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>9.2</td>
-      <td>2894</td>
-      <td>3</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>7.3</td>
-      <td>2325</td>
-      <td>4</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>6.8</td>
-      <td>1916</td>
-      <td>4</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>6.9</td>
-      <td>1805</td>
-      <td>4</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>57</th>
-      <td>7.6</td>
-      <td>1694</td>
-      <td>4</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>58</th>
-      <td>7.6</td>
-      <td>1691</td>
-      <td>4</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>59</th>
-      <td>7.1</td>
-      <td>1550</td>
-      <td>4</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>60</th>
-      <td>8.2</td>
-      <td>1743</td>
-      <td>4</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>61</th>
-      <td>7.5</td>
-      <td>1506</td>
-      <td>4</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>62</th>
-      <td>7.6</td>
-      <td>1481</td>
-      <td>4</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>7.6</td>
-      <td>1474</td>
-      <td>4</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>63</th>
-      <td>8.4</td>
-      <td>1642</td>
-      <td>4</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>65</th>
-      <td>8.1</td>
-      <td>1462</td>
-      <td>4</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>64</th>
-      <td>8.1</td>
-      <td>1477</td>
-      <td>4</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>8.0</td>
-      <td>1475</td>
-      <td>4</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>67</th>
-      <td>8.1</td>
-      <td>1524</td>
-      <td>4</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>68</th>
-      <td>7.0</td>
-      <td>1222</td>
-      <td>5</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>70</th>
-      <td>7.1</td>
-      <td>1076</td>
-      <td>5</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>71</th>
-      <td>7.3</td>
-      <td>1029</td>
-      <td>5</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>72</th>
-      <td>7.3</td>
-      <td>997</td>
-      <td>5</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>73</th>
-      <td>7.2</td>
-      <td>978</td>
-      <td>5</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>74</th>
-      <td>7.5</td>
-      <td>978</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>75</th>
-      <td>7.4</td>
-      <td>963</td>
-      <td>5</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>7.3</td>
-      <td>965</td>
-      <td>5</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>77</th>
-      <td>6.9</td>
-      <td>818</td>
-      <td>5</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>78</th>
-      <td>6.9</td>
-      <td>770</td>
-      <td>5</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>79</th>
-      <td>6.7</td>
-      <td>739</td>
-      <td>5</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>81</th>
-      <td>7.4</td>
-      <td>753</td>
-      <td>5</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>80</th>
-      <td>6.8</td>
-      <td>741</td>
-      <td>5</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>82</th>
-      <td>6.6</td>
-      <td>738</td>
-      <td>5</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>7.0</td>
-      <td>733</td>
-      <td>5</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>69</th>
-      <td>7.7</td>
-      <td>927</td>
-      <td>5</td>
-      <td>16</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
 ```python
 ## Here we create a combined column which appends the seasonNumber 
 ## and episodeNumber of every episode for plotting purposes
@@ -2156,710 +2316,6 @@ for idx in data.index:
 data['combined'] = data['seasonNumber'].astype(str) + data['episodeNumber'].astype(str)
 # display(data)
 ```
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>averageRating</th>
-      <th>numVotes</th>
-      <th>seasonNumber</th>
-      <th>episodeNumber</th>
-      <th>combined</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>29</th>
-      <td>8.1</td>
-      <td>4027</td>
-      <td>1</td>
-      <td>01</td>
-      <td>101</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>8.4</td>
-      <td>3546</td>
-      <td>1</td>
-      <td>02</td>
-      <td>102</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>8.1</td>
-      <td>3238</td>
-      <td>1</td>
-      <td>03</td>
-      <td>103</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>8.3</td>
-      <td>3093</td>
-      <td>1</td>
-      <td>04</td>
-      <td>104</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8.2</td>
-      <td>2955</td>
-      <td>1</td>
-      <td>05</td>
-      <td>105</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>8.0</td>
-      <td>2843</td>
-      <td>1</td>
-      <td>06</td>
-      <td>106</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>8.1</td>
-      <td>2794</td>
-      <td>1</td>
-      <td>07</td>
-      <td>107</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>8.0</td>
-      <td>2726</td>
-      <td>1</td>
-      <td>08</td>
-      <td>108</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>8.4</td>
-      <td>2698</td>
-      <td>1</td>
-      <td>09</td>
-      <td>109</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>9.1</td>
-      <td>3435</td>
-      <td>1</td>
-      <td>10</td>
-      <td>110</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>8.2</td>
-      <td>2689</td>
-      <td>1</td>
-      <td>11</td>
-      <td>111</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>8.4</td>
-      <td>2620</td>
-      <td>1</td>
-      <td>12</td>
-      <td>112</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>8.4</td>
-      <td>2592</td>
-      <td>1</td>
-      <td>13</td>
-      <td>113</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>8.5</td>
-      <td>2696</td>
-      <td>1</td>
-      <td>14</td>
-      <td>114</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>8.1</td>
-      <td>2520</td>
-      <td>1</td>
-      <td>15</td>
-      <td>115</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>8.5</td>
-      <td>2554</td>
-      <td>1</td>
-      <td>16</td>
-      <td>116</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>8.7</td>
-      <td>2678</td>
-      <td>1</td>
-      <td>17</td>
-      <td>117</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>8.2</td>
-      <td>2435</td>
-      <td>1</td>
-      <td>18</td>
-      <td>118</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>8.1</td>
-      <td>2422</td>
-      <td>1</td>
-      <td>19</td>
-      <td>119</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>7.9</td>
-      <td>2391</td>
-      <td>1</td>
-      <td>20</td>
-      <td>120</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>8.5</td>
-      <td>2463</td>
-      <td>1</td>
-      <td>21</td>
-      <td>121</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>8.6</td>
-      <td>2523</td>
-      <td>1</td>
-      <td>22</td>
-      <td>122</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>8.7</td>
-      <td>2495</td>
-      <td>2</td>
-      <td>01</td>
-      <td>201</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>8.5</td>
-      <td>2443</td>
-      <td>2</td>
-      <td>02</td>
-      <td>202</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>8.8</td>
-      <td>2604</td>
-      <td>2</td>
-      <td>03</td>
-      <td>203</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>9.0</td>
-      <td>2759</td>
-      <td>2</td>
-      <td>04</td>
-      <td>204</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>8.5</td>
-      <td>2318</td>
-      <td>2</td>
-      <td>05</td>
-      <td>205</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>9.0</td>
-      <td>2850</td>
-      <td>2</td>
-      <td>06</td>
-      <td>206</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>8.1</td>
-      <td>2225</td>
-      <td>2</td>
-      <td>07</td>
-      <td>207</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>8.0</td>
-      <td>2186</td>
-      <td>2</td>
-      <td>08</td>
-      <td>208</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>8.0</td>
-      <td>2200</td>
-      <td>2</td>
-      <td>09</td>
-      <td>209</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>8.3</td>
-      <td>2333</td>
-      <td>2</td>
-      <td>10</td>
-      <td>210</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>8.3</td>
-      <td>2183</td>
-      <td>2</td>
-      <td>11</td>
-      <td>211</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>8.7</td>
-      <td>2301</td>
-      <td>2</td>
-      <td>12</td>
-      <td>212</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>8.6</td>
-      <td>2329</td>
-      <td>2</td>
-      <td>13</td>
-      <td>213</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>8.5</td>
-      <td>2242</td>
-      <td>2</td>
-      <td>14</td>
-      <td>214</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>8.6</td>
-      <td>2294</td>
-      <td>2</td>
-      <td>15</td>
-      <td>215</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>9.0</td>
-      <td>2635</td>
-      <td>2</td>
-      <td>16</td>
-      <td>216</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>8.5</td>
-      <td>2183</td>
-      <td>2</td>
-      <td>17</td>
-      <td>217</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>8.9</td>
-      <td>2319</td>
-      <td>2</td>
-      <td>18</td>
-      <td>218</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>8.6</td>
-      <td>2236</td>
-      <td>3</td>
-      <td>01</td>
-      <td>301</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>8.3</td>
-      <td>2209</td>
-      <td>3</td>
-      <td>02</td>
-      <td>302</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>8.6</td>
-      <td>2231</td>
-      <td>3</td>
-      <td>03</td>
-      <td>303</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>8.2</td>
-      <td>2188</td>
-      <td>3</td>
-      <td>04</td>
-      <td>304</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>8.7</td>
-      <td>2378</td>
-      <td>3</td>
-      <td>05</td>
-      <td>305</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>8.6</td>
-      <td>2225</td>
-      <td>3</td>
-      <td>06</td>
-      <td>306</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>7.9</td>
-      <td>2056</td>
-      <td>3</td>
-      <td>07</td>
-      <td>307</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>8.7</td>
-      <td>2281</td>
-      <td>3</td>
-      <td>08</td>
-      <td>308</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>8.7</td>
-      <td>2338</td>
-      <td>3</td>
-      <td>09</td>
-      <td>309</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>8.5</td>
-      <td>2110</td>
-      <td>3</td>
-      <td>10</td>
-      <td>310</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>8.6</td>
-      <td>2158</td>
-      <td>3</td>
-      <td>11</td>
-      <td>311</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>8.8</td>
-      <td>2206</td>
-      <td>3</td>
-      <td>12</td>
-      <td>312</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>9.2</td>
-      <td>2894</td>
-      <td>3</td>
-      <td>13</td>
-      <td>313</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>7.3</td>
-      <td>2325</td>
-      <td>4</td>
-      <td>01</td>
-      <td>401</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>6.8</td>
-      <td>1916</td>
-      <td>4</td>
-      <td>02</td>
-      <td>402</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>6.9</td>
-      <td>1805</td>
-      <td>4</td>
-      <td>03</td>
-      <td>403</td>
-    </tr>
-    <tr>
-      <th>57</th>
-      <td>7.6</td>
-      <td>1694</td>
-      <td>4</td>
-      <td>04</td>
-      <td>404</td>
-    </tr>
-    <tr>
-      <th>58</th>
-      <td>7.6</td>
-      <td>1691</td>
-      <td>4</td>
-      <td>05</td>
-      <td>405</td>
-    </tr>
-    <tr>
-      <th>59</th>
-      <td>7.1</td>
-      <td>1550</td>
-      <td>4</td>
-      <td>06</td>
-      <td>406</td>
-    </tr>
-    <tr>
-      <th>60</th>
-      <td>8.2</td>
-      <td>1743</td>
-      <td>4</td>
-      <td>07</td>
-      <td>407</td>
-    </tr>
-    <tr>
-      <th>61</th>
-      <td>7.5</td>
-      <td>1506</td>
-      <td>4</td>
-      <td>08</td>
-      <td>408</td>
-    </tr>
-    <tr>
-      <th>62</th>
-      <td>7.6</td>
-      <td>1481</td>
-      <td>4</td>
-      <td>09</td>
-      <td>409</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>7.6</td>
-      <td>1474</td>
-      <td>4</td>
-      <td>10</td>
-      <td>410</td>
-    </tr>
-    <tr>
-      <th>63</th>
-      <td>8.4</td>
-      <td>1642</td>
-      <td>4</td>
-      <td>11</td>
-      <td>411</td>
-    </tr>
-    <tr>
-      <th>65</th>
-      <td>8.1</td>
-      <td>1462</td>
-      <td>4</td>
-      <td>12</td>
-      <td>412</td>
-    </tr>
-    <tr>
-      <th>64</th>
-      <td>8.1</td>
-      <td>1477</td>
-      <td>4</td>
-      <td>13</td>
-      <td>413</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>8.0</td>
-      <td>1475</td>
-      <td>4</td>
-      <td>14</td>
-      <td>414</td>
-    </tr>
-    <tr>
-      <th>67</th>
-      <td>8.1</td>
-      <td>1524</td>
-      <td>4</td>
-      <td>15</td>
-      <td>415</td>
-    </tr>
-    <tr>
-      <th>68</th>
-      <td>7.0</td>
-      <td>1222</td>
-      <td>5</td>
-      <td>01</td>
-      <td>501</td>
-    </tr>
-    <tr>
-      <th>70</th>
-      <td>7.1</td>
-      <td>1076</td>
-      <td>5</td>
-      <td>02</td>
-      <td>502</td>
-    </tr>
-    <tr>
-      <th>71</th>
-      <td>7.3</td>
-      <td>1029</td>
-      <td>5</td>
-      <td>03</td>
-      <td>503</td>
-    </tr>
-    <tr>
-      <th>72</th>
-      <td>7.3</td>
-      <td>997</td>
-      <td>5</td>
-      <td>04</td>
-      <td>504</td>
-    </tr>
-    <tr>
-      <th>73</th>
-      <td>7.2</td>
-      <td>978</td>
-      <td>5</td>
-      <td>05</td>
-      <td>505</td>
-    </tr>
-    <tr>
-      <th>74</th>
-      <td>7.5</td>
-      <td>978</td>
-      <td>5</td>
-      <td>06</td>
-      <td>506</td>
-    </tr>
-    <tr>
-      <th>75</th>
-      <td>7.4</td>
-      <td>963</td>
-      <td>5</td>
-      <td>07</td>
-      <td>507</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>7.3</td>
-      <td>965</td>
-      <td>5</td>
-      <td>08</td>
-      <td>508</td>
-    </tr>
-    <tr>
-      <th>77</th>
-      <td>6.9</td>
-      <td>818</td>
-      <td>5</td>
-      <td>09</td>
-      <td>509</td>
-    </tr>
-    <tr>
-      <th>78</th>
-      <td>6.9</td>
-      <td>770</td>
-      <td>5</td>
-      <td>10</td>
-      <td>510</td>
-    </tr>
-    <tr>
-      <th>79</th>
-      <td>6.7</td>
-      <td>739</td>
-      <td>5</td>
-      <td>11</td>
-      <td>511</td>
-    </tr>
-    <tr>
-      <th>81</th>
-      <td>7.4</td>
-      <td>753</td>
-      <td>5</td>
-      <td>12</td>
-      <td>512</td>
-    </tr>
-    <tr>
-      <th>80</th>
-      <td>6.8</td>
-      <td>741</td>
-      <td>5</td>
-      <td>13</td>
-      <td>513</td>
-    </tr>
-    <tr>
-      <th>82</th>
-      <td>6.6</td>
-      <td>738</td>
-      <td>5</td>
-      <td>14</td>
-      <td>514</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>7.0</td>
-      <td>733</td>
-      <td>5</td>
-      <td>15</td>
-      <td>515</td>
-    </tr>
-    <tr>
-      <th>69</th>
-      <td>7.7</td>
-      <td>927</td>
-      <td>5</td>
-      <td>16</td>
-      <td>516</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
 
 STEP 3: DATA ANALYSIS & VISUALIZATION
 
@@ -2879,15 +2335,15 @@ import statsmodels.formula.api as smf
 print(data.describe()) # Descriptive statistics 
 ```
 
-           averageRating     numVotes  seasonNumber            sd
-    count      84.000000    84.000000     84.000000  8.400000e+01
-    mean        8.061905  2065.940476      2.821429  6.463810e-01
-    std         0.646381   736.040602      1.482108  1.116891e-16
-    min         6.600000   733.000000      1.000000  6.463810e-01
-    25%         7.600000  1499.750000      1.000000  6.463810e-01
-    50%         8.200000  2228.000000      3.000000  6.463810e-01
-    75%         8.525000  2530.750000      4.000000  6.463810e-01
-    max         9.200000  4027.000000      5.000000  6.463810e-01
+           averageRating     numVotes  seasonNumber
+    count      84.000000    84.000000     84.000000
+    mean        8.061905  2065.940476      2.821429
+    std         0.646381   736.040602      1.482108
+    min         6.600000   733.000000      1.000000
+    25%         7.600000  1499.750000      1.000000
+    50%         8.200000  2228.000000      3.000000
+    75%         8.525000  2530.750000      4.000000
+    max         9.200000  4027.000000      5.000000
 
 
 
@@ -3803,7 +3259,7 @@ sns.catplot(x='seasonNumber', y='numVotes', kind='violin', data=data)
 
 
 
-    <seaborn.axisgrid.FacetGrid at 0x2a168c3d0>
+    <seaborn.axisgrid.FacetGrid at 0x1ade3c940>
 
 
 
@@ -3834,6 +3290,7 @@ plt.savefig('A_D_Performance_Scatter.png')
 
 ```python
 ## 4th iteration plot: line graph view of data, divided by season
+data['episodeNumber'] = data['episodeNumber'].astype(str)
 sns.relplot(
     data=data, x="episodeNumber", y="averageRating", col="seasonNumber",
     hue="seasonNumber",palette='pastel', kind="line", linewidth=6
@@ -3936,7 +3393,7 @@ for i, s_data in enumerate(season_data):
     axs[0].legend(loc='lower left')
 
 fig.tight_layout()    
-plt.savefig('A_D_Performance_Season_Mean.png')
+# plt.savefig('A_D_Performance_Season_Mean.png')
 ```
 
 
@@ -4004,7 +3461,7 @@ for i, s_data in enumerate(season_data):
     axs[0].legend(loc='lower left')
     
 fig.tight_layout()    
-plt.savefig('A_D_Performance_Grand_Mean.png')
+# plt.savefig('A_D_Performance_Grand_Mean.png')
 ```
 
 
@@ -4014,3 +3471,56 @@ plt.savefig('A_D_Performance_Grand_Mean.png')
 
 
 Now we see a grand mean line plotted against the same data as before. Our highlighted points now vary from the previous graphs as we look for the data that lie outside of 1 standard deviation from the grand mean. Immediately, we see that the only points outside this range are the highest rated episodes of the show, those contained in seasons 1-3. Season 4’s slow start consists of the first batch of low-rated episodes of the show, but holistically, season 4 greatly outperforms season 5. By proportion of episodes below one standard deviation of the mean, we see ~26.67% (4/15) of season 4 episodes occupying this space, in comparison to the 87.50% (14/16) of season 5 episodes that meet the same criteria. Empirically, season 5 is not worth anyone’s time save maybe the completionist. Perhaps it is up for debate whether season 4 is worthy of sharing the spotlight with seasons 1-3. Undoubtedly, seasons 1-3 and seasons 4-5 feel like different shows and so it is up to the viewer if they wish to subject themselves to what is made of this prolific show. Season 3 ends nicely, as we’ve proved, and it is within that vein that we could simply pretend nothing comes after that. Ignorance is bliss as they say.
+
+
+```python
+# ## Resizing final plots and resaving
+# season_data = [s1_data, s2_data, s3_data, s4_data, s5_data]
+# fig, axs = plt.subplots(ncols=5, figsize=(50,15))
+# color_arr = {
+#     0:'green',
+#     1:'blue',
+#     2:'orange',
+#     3:'red',
+#     4:'magenta'
+# }
+
+# axs[0].set_ylabel('Average Ratings', style='italic', weight='bold', fontsize=30)
+# for i, s_data in enumerate(season_data):
+#     xs = s_data['episodeNumber'].astype(int)
+#     ys = s_data['averageRating']
+    
+#     coeff = np.polyfit(xs,ys,deg=4)
+#     fit = np.polyval(coeff,xs)
+#     residuals = ys - fit
+#     std = np.std(residuals)
+    
+#     data_mean = data['averageRating'].mean()
+#     data_std = data['averageRating'].std()
+#     below_mean = ys < (data_mean-data_std)
+#     below_mean_xs = xs[below_mean]
+#     below_mean_ys = ys[below_mean]
+#     axs[i].scatter(below_mean_xs, below_mean_ys, color='black', marker='o', s=1450)
+    
+#     above_mean = ys > (data_mean+data_std)
+#     above_mean_xs = xs[above_mean]
+#     above_mean_ys = ys[above_mean]
+#     axs[i].scatter(above_mean_xs, above_mean_ys, color='black', marker='o', s=1450, label='One SD ± Grand Mean')
+    
+
+#     axs[i].set_title(f'Season {i+1}', fontsize=65, weight='bold',family='serif')
+#     axs[i].set_titlesize = 30
+#     axs[i].set_ylim(6.5,9.5)    
+#     axs[i].set_xlabel('Episodes', style='italic', weight='bold', fontsize=40)
+#     axs[0].set_ylabel('Average Ratings', style='italic', weight='bold', fontsize=40)
+#     axs[i].tick_params(axis='both', which='major', labelsize=28)
+#     axs[i].grid(False)
+#     axs[i].plot(xs, ys, 'o', color=color_arr[i], markersize=30) # size='numVotes'
+#     axs[i].plot(xs, fit, color=color_arr[i], label='Fitted Lines', linewidth=18)
+#     axs[i].fill_between(xs, fit - std, fit + std, color='gray', alpha=0.3) # label='1 Std. Dev.'
+#     axs[i].axhline(data['averageRating'].mean(), color='gray', linestyle='--', linewidth=5, label='Grand Mean')
+#     axs[0].legend(loc='lower left')
+    
+# fig.tight_layout() 
+# plt.savefig('test.png')
+```
